@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新年祝福</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <p>Hello, world!</p>
+    <audio controls
+        id="recording"
+        preload="auto"
+    ></audio>
     <script>
-        console.log(window.location.search);
+        const params = new URL(window.location.href).searchParams;
+        const recordingFilename = params.get('rid');
+
+        const $audio = document.querySelector('#recording');
+        $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
+        $audio.load();
     </script>
 </body>
 </html>
