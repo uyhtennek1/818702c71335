@@ -39,10 +39,14 @@
         $audio.load();
 
         $shareBtn.addEventListener("click", async () => {
+            const res = await fetch($audio.src);
+            const blob = await res.blob();
             await navigator.share({
                 title: '新年祝福',
                 text: '點擊收聽我的新年祝福！',
-                url: `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`,
+                files: [
+                    new File([blob], 'greeting.wav', { type: blob.type })
+                ]
             });
         });
     </script>
