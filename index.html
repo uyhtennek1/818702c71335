@@ -33,8 +33,7 @@
         const $audio = document.querySelector('#recording');
         const $dlBtn = document.querySelector('#dl-btn');
 
-        $dlBtn.href = $audio.src;
-        $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
+        $dlBtn.href = $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
         $audio.load();
     </script>
 </body>
