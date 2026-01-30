@@ -12,9 +12,11 @@
             align-items: center;
             justify-content: center;
         }
-        img {
-            color: black;
-            padding: 12px;
+        button {
+            background-color: transparent;
+            border: none;
+            padding-left: 12px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -23,18 +25,26 @@
         id="recording"
         preload="auto"
     ></audio>
-    <a id="dl-btn" href="" download="cny2026">
-        <img src="dl-light.png" alt="download" />
-    </a>
+    <button id="share-btn">
+        <img src="share.png" alt="share" />
+    </button>
     <script>
         const params = new URL(window.location.href).searchParams;
         const recordingFilename = params.get('rid');
 
         const $audio = document.querySelector('#recording');
-        const $dlBtn = document.querySelector('#dl-btn');
+        const $shareBtn = document.querySelector('#share-btn');
 
-        $dlBtn.href = $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
+        $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
         $audio.load();
+
+        $shareBtn.addEventListener("click", async () => {
+            await navigator.share({
+                title: '新年祝福',
+                text: '點擊收聽我的新年祝福！',
+                url: `https://35276324828a839b09n.com/?rid=${recordingFilename}`,
+            });
+        });
     </script>
 </body>
 </html>
