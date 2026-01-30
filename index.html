@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新年祝福</title>
+    <title>開運傳聲揮春</title>
     <style>
         body {
             background-color: #e70012;
@@ -42,10 +42,10 @@
             const res = await fetch($audio.src);
             const blob = await res.blob();
             await navigator.share({
-                title: '新年祝福',
+                title: '開運傳聲揮春',
                 text: '點擊收聽我的新年祝福！',
                 files: [
-                    new File([blob], 'greeting.wav', { type: blob.type })
+                    new File([blob], '開運傳聲揮春.wav', { type: blob.type })
                 ]
             });
         });
