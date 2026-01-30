@@ -6,10 +6,15 @@
     <title>新年祝福</title>
     <style>
         body {
+            background-color: #e70012;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        img {
+            color: black;
+            padding: 12px;
         }
     </style>
 </head>
@@ -18,11 +23,17 @@
         id="recording"
         preload="auto"
     ></audio>
+    <a id="dl-btn" download="cny2026">
+        <img src="dl-light.png" alt="download" />
+    </a>
     <script>
         const params = new URL(window.location.href).searchParams;
         const recordingFilename = params.get('rid');
 
         const $audio = document.querySelector('#recording');
+        const $dlBtn = document.querySelector('#dl-btn');
+
+        $dlBtn.href = $audio.src;
         $audio.src = `https://pub-9d96e62182ac4492a2671a8880aaad8e.r2.dev/${recordingFilename}`;
         $audio.load();
     </script>
